@@ -27,6 +27,12 @@ RUN apt-key add /tmp/linux_signing_key.pub \
 	&& mkdir -p /home/chrome/.config/chrome-remote-desktop \
 	&& chown -R chrome:chrome /home/chrome/.config
 
+RUN apt-get install -y software-properties-common && \
+    add-apt-repository ppa:mc3man/trusty-media && \
+    apt-get update -y && \
+    apt-get install ffmpeg -y && \
+    apt-get install imagemagick -y
+
 VOLUME ["/home/chrome"]
 
 EXPOSE 5900
